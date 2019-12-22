@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.Activities.WithdrawActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <LinearLayout
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textvalue" />
+
+            <TextView
+                android:id="@+id/textAvailable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.00" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textwithdrawamount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textWithdraw" />
+
+        <EditText
+            android:id="@+id/editwithdrawAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/textWithdraw"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textaccountnumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textAccountNo" />
+
+        <EditText
+            android:id="@+id/editAccNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/textAccountNo"
+            android:inputType="number" />
+
+        <Button
+            style="@style/buttonStyle"
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textSubmit" />
+
+
+    </LinearLayout>
+</RelativeLayout>

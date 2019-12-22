@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.MaterialComponents.CardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:strokeColor="@color/grey"
+    app:strokeWidth="0.1dp">
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/productImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/productImage" />
+
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/productImage"
+            android:textColor="@color/black"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxEms="12"
+            android:maxLines="2"
+            android:minLines="1"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/sellPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_below="@+id/productQuantity"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/productQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="10dp"
+            android:textColor="@color/black"
+            android:layout_marginStart="5dp"
+            android:textSize="12sp"
+            tools:ignore="RelativeOverlap" />
+
+        <TextView
+            android:id="@+id/leftover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productName"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/productImage"
+            android:textSize="12sp" />
+
+        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+            android:id="@+id/edit_qty"
+            android:layout_width="115dp"
+            android:layout_height="35dp"
+            android:layout_below="@id/leftover"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/productImage"
+            app:initialNumber="1"
+            app:backGroundColor="@color/colorWhite"
+            app:textColor="@color/black" />
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

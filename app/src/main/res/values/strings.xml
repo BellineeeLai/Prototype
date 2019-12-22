@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Project</string>
+
+    <string name="view_all">VIEW ALL</string>
+    <string name="latest">LATEST</string>
+
+
+    <string name="currency">RM%1$.2f</string>
+
+    <!--Transaction List-->
+    <string name="plus_amount">+ RM%1$.2f</string>
+    <string name="minus_amount">- RM%1$.2f</string>
+    <string name="transaction_status">%s %s</string>
+
+    <!-- Cart -->
+    <string name="empty_cart_text">You have no items in your cart</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="text_leftover">Only %d left.</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="productImage">ProductImage</string>
+    <string name="subtotal">Subtotal:</string>
+    <string name="rm0_00">RM0.00</string>
+    <string name="checkout">CHECKOUT</string>
+    <string name="try_it_on">Try It On</string>
+    <string name="add_to_wishlist">Add to Wishlist</string>
+
+    <string name="notify_added_wishlist">Added to Wishlist</string>
+    <string name="notify_added_cart">Added to Cart</string>
+    <string name="notify_payment">Payment Success</string>
+    <string name="txtSubtotal">Subtotal:</string>
+    <string name="default_price">RM0.00</string>
+    <string name="cart_title">CART</string>
+
+    <!--Login Activity-->
+    <string name="textSignIn">Sign In</string>
+    <string name="buttonSignIn">Sign In</string>
+    <string name="registerTextView">No Account yet? Register here</string>
+    <string name="TextViewSignStaff">Staff? Sign in here</string>
+
+    <!-- Register Activity -->
+    <string name="registerText">User Registration</string>
+    <string name="nameText">Name</string>
+    <string name="emailText">Email</string>
+    <string name="passwordText">Password</string>
+    <string name="cpasswordText">Confirm Password</string>
+    <string name="registerButton">Register</string>
+    <string name="signInText">Already Register? Login here</string>
+
+    <!-- Profile Activity -->
+    <string name="setUserPreferenceText">Set User Preference</string>
+    <string name="ewalletText">E-wallet</string>
+    <string name="trackShippingText">Track your shipping</string>
+    <string name="setAddressText">Set Address</string>
+    <string name="signOutText">Sign Out</string>
+
+    <!-- E-wallet Activity -->
+    <string name="textBalance">E-Wallet Balance</string>
+    <string name="textAmount">RM 0.00</string>
+    <string name="topup">Top Up</string>
+    <string name="withdraw">Withdraw</string>
+    <string name="transactionHistory">Transaction History :</string>
+
+    <!-- Topup Activity -->
+    <string name="textTopupAmount">Topup amount : RM</string>
+    <string name="textCardNumber">Card Number :</string>
+    <string name="textExpiryDate">Expiry Date :</string>
+    <string name="textCVV">CVV</string>
+    <string name="textSave">Save details for future payment</string>
+    <string name="textSubmit">Submit</string>
+    <string name="textMinTopup">Enter at least RM50</string>
+
+    <string name="out_of_stock">This product is not in stock.</string>
+    <string name="limited_stock">Limited stock.</string>
+    <string name="in_stock">This product is in stock.</string>
+    <string name="empty_wishlist">Your wishlist is empty.</string>
+    <string name="search">Search</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="cart">Cart</string>
+    <string name="picture">Picture</string>
+    <string name="upload">Upload</string>
+    <string name="ship_to">1. SHIP TO:</string>
+    <string name="shipping_method">2. GET IT BY:</string>
+    <string name="payment_method">3. PAY WITH:</string>
+    <string name="popular">POPULAR</string>
+    <string name="free_shipping_text">FREE Shipping</string>
+    <string name="qty">QTY: %s</string>
+
+    <!-- Delivery Service Activity -->
+    <string name="textShipping">Shipping :</string>
+
+    <!-- Address Activity -->
+    <string name="textAddAddress">Add Address</string>
+
+    <!-- Set Address Activity -->
+    <string name="textReceiverName">Receiver Name</string>
+    <string name="textPhoneNumber">Phone Number</string>
+    <string name="textAddress">Unit, Building, Street and etc</string>
+    <string name="textPostalCode">Postal Code</string>
+    <string name="textArea">Area</string>
+    <string-array name="stateItem">
+        <item>Selangor</item>
+        <item>Putrajaya</item>
+        <item>Kuala Lumpur</item>
+    </string-array>
+    <string name="textDefaultAddress">Set as Default Address</string>
+    <string name="address">Address</string>
+
+    <!-- Transaction Confirmation Activity -->
+    <string name="textTransCon">Transaction Confirmation</string>
+    <string name="textTransID">Transaction ID</string>
+    <string name="textTo">To</string>
+    <string name="textTransDescription">Description</string>
+    <string name="amount">Amount</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Transaction Done Activity -->
+    <string name="textStatus">Status</string>
+    <string name="textDateTime">Transaction Date and Time</string>
+    <string name="textbalanceBefore">Balance Before</string>
+    <string name="textbalanceAfter">Balance After</string>
+    <string name="btnBack">Back</string>
+
+    <!-- Withdraw Activity -->
+    <string name="textWithdraw">Withdraw amount : RM </string>
+    <string name="textvalue">Available balance:</string>
+    <string name="textAccountNo">Account Number :</string>
+    <string name="title_wishlist">WISHLIST</string>
+    <string name="product_description">Product Description</string>
+    <string name="insufficient_balance">Insufficient wallet balance.</string>
+    <string name="credit_card">Credit/Debit card</string>
+    <string name="smart_pay">SmartPay</string>
+    <string name="smart_dresser">Smart Dresser</string>
+    <string name="username">Username</string>
+
+    <!-- User Preference Activity -->
+    <string name="textManageUP">Manage User Preference</string>
+    <string name="textDetails">Please choose 1 category you wish to show for all the time :</string>
+    <string name="cat1">Shirts</string>
+    <string name="cat2">Pants</string>
+    <string name="cat3">Shoes</string>
+    <string name="cat4">Adidas</string>
+    <string name="cat5">Puma</string>
+    <string name="cat6">Nike</string>
+    <string name="save">Save</string>
+
+    <!-- Staff Login -->
+    <string name="textLoginCus">Customer? Sign in here</string>
+    <string name="textId">Staff ID</string>
+    <string name="login_cart">Register/Login to start adding to cart.</string>
+    <string name="login_wishlist">Register/Login to start adding to wishlist.</string>
+    <string name="preferred">PREFERRED</string>
+
+    <!-- trans_history -->
+    <string name="textType">Transaction Type</string>
+    <string name="textTDetails">Transaction Details</string>
+    <string name="textPostT">Posting Date and Time</string>
+    <string name="add_promo_code">Add promo code</string>
+    <string name="promo_code">PROMO CODE</string>
+    <string name="apply_code">APPLY</string>
+    <string name="promo_code_value">Promo Code Value</string>
+    <string name="enter_new_promo_code">Enter New Promo Code</string>
+    <string name="confirm">Confirm</string>
+    <string name="enter_promo_code">Enter promo code</string>
+    <string name="already_in_wish">Already in wishlist</string>
+    <string name="_4667">Credit Card: 4667</string>
+    <string name="remove_from_cart">This product is no longer in stock.\nPlease remove from shopping cart.</string>
+    <string name="title_activity_my_purchase">MyPurchaseActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+</resources>
