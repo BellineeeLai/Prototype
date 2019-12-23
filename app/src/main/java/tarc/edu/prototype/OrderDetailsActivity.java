@@ -57,7 +57,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
         orderNode = "Orders";
         orderDetailsNode = "UserOrderDetail";
         transNode = "Transaction";
-        userOrderNode = "UserOrder";
+        userOrderNode = "CustomerOrder";
     }
 
 
@@ -113,12 +113,10 @@ public class OrderDetailsActivity extends AppCompatActivity {
         DatabaseReference uoRef = FirebaseDatabase
                 .getInstance()
                 .getReference()
-                .child(userOrderNode);
-
-        Query query = uoRef.orderByChild("orderID").equalTo(orderId);
+                .child(userOrderNode).child(orderId);
 
         options = new FirebaseRecyclerOptions.Builder<UserOrder>()
-                .setQuery(query, UserOrder.class)
+                .setQuery(uoRef, UserOrder.class)
                 .build();
 
         adapter = new FirebaseRecyclerAdapter<UserOrder, ProductOrderViewHolder>(options) {

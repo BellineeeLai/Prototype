@@ -2,7 +2,7 @@ package tarc.edu.prototype.Model;
 
 @SuppressWarnings("unused")
 public class User {
-    private String name,email,password, staffId, phoneNo, preferences;
+    private String name,email,password, staffId, phoneNo, preferences,incharge;
 
     public User() {
     }
@@ -14,12 +14,13 @@ public class User {
         this.preferences = preferences;
     }
 
-    public User(String name, String password, String staffId, String phoneNo, String preferences) {
+    public User(String name, String password, String staffId, String phoneNo, String preferences, String incharge) {
         this.name = name;
         this.password = password;
         this.staffId = staffId;
         this.phoneNo = phoneNo;
         this.preferences = preferences;
+        this.incharge = incharge;
     }
 
     public String getName() {
@@ -48,6 +49,14 @@ public class User {
 
     public String getStaffId() {
         return staffId;
+    }
+
+    public String getIncharge() {
+        return incharge;
+    }
+
+    public void setIncharge(String incharge) {
+        this.incharge = incharge;
     }
 
     public void setStaffId(String staffId) {
