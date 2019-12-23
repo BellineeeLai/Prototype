@@ -54,45 +54,61 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout">
 
 
                 <Button
                     android:id="@+id/btnSetUp"
                     style="@style/buttonStyle"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAllCaps="false"
                     app:icon="@drawable/ic_feedback"
-                    app:iconTintMode="add" />
+                    app:iconTintMode="add"
+                    tools:layout_conversion_absoluteHeight="48dp"
+                    tools:layout_editor_absoluteY="147dp"
+                    tools:layout_editor_absoluteX="12dp"
+                    tools:layout_conversion_absoluteWidth="80dp" />
 
                 <Button
                     android:id="@+id/btnEWallet"
                     style="@style/buttonStyle"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/profile_button"
                     android:textAllCaps="false"
-                    app:icon="@drawable/ic_account_balance_wallet_24px" />
+                    app:icon="@drawable/ic_account_balance_wallet_24px"
+                    tools:layout_conversion_absoluteHeight="48dp"
+                    tools:layout_editor_absoluteY="147dp"
+                    tools:layout_editor_absoluteX="117dp"
+                    tools:layout_conversion_absoluteWidth="80dp" />
 
                 <Button
                     android:id="@+id/btnSetAddress"
                     style="@style/buttonStyle"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/profile_button"
                     android:textAllCaps="false"
-                    app:icon="@drawable/ic_location" />
+                    app:icon="@drawable/ic_location"
+                    tools:layout_conversion_absoluteHeight="48dp"
+                    tools:layout_editor_absoluteY="147dp"
+                    tools:layout_editor_absoluteX="221dp"
+                    tools:layout_conversion_absoluteWidth="80dp" />
 
                 <Button
                     android:id="@+id/btnTrackShipping"
                     style="@style/buttonStyle"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/profile_button"
                     android:textAllCaps="false"
-                    android:layout_marginEnd="30dp"
-                    app:icon="@drawable/ic_delivery_truck" />
+                    app:icon="@drawable/ic_delivery_truck"
+                    tools:layout_conversion_absoluteHeight="70dp"
+                    tools:layout_editor_absoluteY="136dp"
+                    tools:layout_editor_absoluteX="325dp"
+                    tools:layout_conversion_absoluteWidth="80dp" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

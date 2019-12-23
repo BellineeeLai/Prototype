@@ -62,6 +62,7 @@ public class OrderAdapter extends FirebaseRecyclerAdapter<UserOrderList, UserOrd
         userOrderViewHolder.txtcom.setText(userOrder.getStatus());
         if(userOrder.getStatus().equals("COMPLETE")) {
             userOrderViewHolder.completeBtn.setVisibility(View.INVISIBLE);
+            userOrderViewHolder.trackBtn.setVisibility(View.INVISIBLE);
         }
         userOrderViewHolder.completeBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -44,6 +44,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Price" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/trackBtn"
+        style="@style/buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Track Shipping" />
 
         <Button
             android:id="@+id/completeBtn"
@@ -51,5 +62,8 @@
             style="@style/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-        </LinearLayout>
+
+
+</LinearLayout>
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
