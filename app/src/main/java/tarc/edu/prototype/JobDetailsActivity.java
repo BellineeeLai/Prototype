@@ -3,6 +3,7 @@ package tarc.edu.prototype;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import tarc.edu.prototype.Model.UserOrder;
 import tarc.edu.prototype.Model.UserOrderDetail;
@@ -100,12 +104,37 @@ public class JobDetailsActivity extends AppCompatActivity implements View.OnClic
         DatabaseReference oref = FirebaseDatabase.getInstance().getReference().child(orderNode).child(orderId);
         if(view == btnDelivered){
 
-            oref.addValueEventListener(new ValueEventListener() {
+         /*   oref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     UserOrder uo = dataSnapshot.getValue(UserOrder.class);
                     assert uo != null;
                     uo.setStatus("Delivering");
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });*/
+
+            ArrayList<UserOrder> orderList = new ArrayList<>();
+            final HashMap<String, Object> userOrderMap = new HashMap<>();
+            userOrderMap.put("status", "COMPLETE");
+            oref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot ds : dataSnapshot.getChildren()){
+                        orderList.add(ds.getValue(UserOrder.class));
+                    }
+                    for(int i = 0; i < orderList.size(); i++){
+                        orderList.get(i).setStatus("COMPLETE");
+                    }
+
+                    oref.setValue(orderList);
+
+                    Intent intent = new Intent(getApplicationContext(),JobAssignedActivity.class);
+                    startActivity(intent);
                 }
 
                 @Override
@@ -119,9 +148,8 @@ public class JobDetailsActivity extends AppCompatActivity implements View.OnClic
          oref.addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                 UserOrder uo = dataSnapshot.getValue(UserOrder.class);
-                 assert uo != null;
-                 uo.setStatus("Failed to deliver");
+                 Intent intent = new Intent(getApplicationContext(),JobAssignedActivity.class);
+                 startActivity(intent);
              }
 
              @Override

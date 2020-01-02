@@ -19,6 +19,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import tarc.edu.prototype.Model.UserOrder;
 import tarc.edu.prototype.Model.UserOrderList;
 import tarc.edu.prototype.ViewHolder.UserOrderViewHolder;
 
@@ -84,6 +88,57 @@ public class OrderAdapter extends FirebaseRecyclerAdapter<UserOrderList, UserOrd
                             .child(orderNode);
 
                 }
+
+                DatabaseReference tempRef = FirebaseDatabase
+                        .getInstance()
+                        .getReference()
+                        .child("CustomerOrder").child(userOrder.getOrderId());
+
+                DatabaseReference tempRef2 = FirebaseDatabase
+                        .getInstance()
+                        .getReference()
+                        .child("UserOrder");
+
+                /*tempRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        UserOrder order = dataSnapshot.getValue(UserOrder.class);
+                        if(order.getOrderID().equals(userOrder.getOrderId())){
+                            order.setStatus("COMPLETE");
+                            tempRef2.child(dataSnapshot.getKey()).setValue(order);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });*/
+
+                ArrayList<UserOrder> orderList = new ArrayList<>();
+                final HashMap<String, Object> userOrderMap = new HashMap<>();
+                userOrderMap.put("status", "COMPLETE");
+                tempRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot ds : dataSnapshot.getChildren()){
+                            orderList.add(ds.getValue(UserOrder.class));
+                        }
+                        for(int i = 0; i < orderList.size(); i++){
+                            orderList.get(i).setStatus("COMPLETE");
+                        }
+
+                        tempRef.setValue(orderList);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
                 uoRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -2,18 +2,29 @@ package tarc.edu.prototype;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import tarc.edu.prototype.Model.User;
+import tarc.edu.prototype.Model.UserOrder;
 
 public class DeliveryReportActivity extends AppCompatActivity {
 
@@ -23,6 +34,14 @@ public class DeliveryReportActivity extends AppCompatActivity {
     private TextView sname,sid;
     private FirebaseDatabase db;
     private DatabaseReference ref;
+    private RecyclerView reportRecyclerView;
+    private FirebaseRecyclerOptions<UserOrder> options;
+    private FirebaseRecyclerAdapter<UserOrder, JobReportViewHolder> adapter;
+    String customerOrderNode;
+
+    public DeliveryReportActivity(){
+        customerOrderNode = "UserOrderDetail";
+    }
 
 
     @Override
@@ -37,8 +56,38 @@ public class DeliveryReportActivity extends AppCompatActivity {
         assert userType != null;
         tempId = sharedPreferences.getString("staffId", null);
         tempNode = "Staff";
+        reportRecyclerView = findViewById(R.id.reportRecyclerView);
+
+        reportRecyclerView.setHasFixedSize(false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        reportRecyclerView.setLayoutManager(layoutManager);
 
         loadStaff();
+        loadReport();
+    }
+
+    private void loadReport() {
+        DatabaseReference coref = FirebaseDatabase.getInstance().getReference().child(customerOrderNode);
+        //Query query = coref.orderByChild("0");
+        options = new FirebaseRecyclerOptions.Builder<UserOrder>().setQuery(coref,UserOrder.class).build();
+
+        adapter = new FirebaseRecyclerAdapter<UserOrder, JobReportViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull JobReportViewHolder jobReportViewHolder, int i, @NonNull UserOrder userOrder) {
+                jobReportViewHolder.sstatus.setText("COMPLETE");
+                jobReportViewHolder.sid.setText(userOrder.getOrderID());
+                jobReportViewHolder.ddate.setText(userOrder.getDate());
+            }
+
+            @NonNull
+            @Override
+            public JobReportViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.job_report_details, parent, false);
+                return new JobReportViewHolder(view);
+            }
+        };
+        adapter.startListening();
+        reportRecyclerView.setAdapter(adapter);
     }
 
     private void loadStaff() {
@@ -57,5 +106,18 @@ public class DeliveryReportActivity extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

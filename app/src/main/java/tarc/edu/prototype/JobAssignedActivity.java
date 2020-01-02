@@ -42,7 +42,7 @@ public class JobAssignedActivity extends AppCompatActivity {
     public JobAssignedActivity(){
         userOrderNode = "UserOrderDetail";
         orderNode = "CustomerOrder";
-        status = "To Receive";
+        status = "TO RECEIVE";
         detailsNode = "Details";
     }
 
@@ -96,7 +96,7 @@ public class JobAssignedActivity extends AppCompatActivity {
                 .getReference()
                 .child(userOrderNode);
 
-
+      //  Query query = uoRef.orderByChild("status").equalTo("TO RECEIVE");
         options = new FirebaseRecyclerOptions.Builder<UserOrder>()
                 .setQuery(uoRef, UserOrder.class)
                 .build();
@@ -106,7 +106,9 @@ public class JobAssignedActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull JobAssignViewHolder jobAssignViewHolder, int i, @NonNull UserOrder userOrder) {
                 jobAssignViewHolder.sid.setText(userOrder.getOrderID());
-                jobAssignViewHolder.done.setImageResource(R.drawable.ic_tick);
+
+                    jobAssignViewHolder.done.setImageResource(R.drawable.ic_tick);
+
                 jobAssignViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

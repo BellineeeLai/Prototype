@@ -141,6 +141,7 @@ public class TransactionConfirmationActivity extends AppCompatActivity implement
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String id = transID.getText().toString().trim();
                 String to = transTo.getText().toString().trim();
                 String desc = transDesc.getText().toString().trim();
@@ -339,7 +340,7 @@ public class TransactionConfirmationActivity extends AppCompatActivity implement
 
                         //TODO
                         orderList.add(new UserOrder(cart.getProductID(), cart.getProductName(), cart.getProductQuantity()
-                                , cart.getSellPrice(), orderID, sdf.format(date), "To Receive"));
+                                , cart.getSellPrice(), orderID, sdf.format(date), "TO RECEIVE"));
 
                         userOrderMap.put("productID", cart.getProductID());
                         userOrderMap.put("productName", cart.getProductName());

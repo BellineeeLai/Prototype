@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import java.util.Objects;
+
 import tarc.edu.prototype.Model.UserOrderList;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -24,19 +26,17 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ToReceivedFragment extends Fragment {
     private static final String FILE_NAME = "SmartDresser";
-    private String userNode;
     private String orderNode;
-    private String staffId, userType, staffNode,status;
+    private String userType,status;
     private DatabaseReference orderRef;
     private OrderAdapter adapter;
     private FirebaseUser user;
     Query query;
+    String tempNode, tempId;
 
     private RecyclerView order_list;
     public ToReceivedFragment() {
         orderNode = "Orders";
-        userNode = "Users";
-        staffNode = "Staff";
         status = "TO RECEIVE";
     }
 
@@ -53,12 +53,21 @@ public class ToReceivedFragment extends Fragment {
       View view = inflater.inflate(R.layout.fragment_to_received, container, false);
 
         assert getArguments() != null;
-        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(FILE_NAME, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = Objects.requireNonNull(this.getActivity()).getSharedPreferences(FILE_NAME, MODE_PRIVATE);
         userType = sharedPreferences.getString("user", null);
 
-        assert userType != null;
-        if(userType.equals("Staff")){
-            staffId = sharedPreferences.getString("staffId", null);
+        if(userType != null){
+            if(userType.equals("Customer")){
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                assert user != null;
+                tempId = user.getUid();
+                tempNode = "Users";
+            } else {
+                tempId = sharedPreferences.getString("staffId", null);
+                tempNode = "Staff";
+            }
+        } else {
+            tempId = "";
         }
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -73,25 +82,13 @@ public class ToReceivedFragment extends Fragment {
     }
 
     private void loadOrder() {
-        if(userType.equals("Customer")) {
-            orderRef = FirebaseDatabase
-                    .getInstance()
-                    .getReference()
-                    .child(userNode)
-                    .child(user.getUid())
-                    .child(orderNode);
+        orderRef = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(tempNode)
+                .child(tempId)
+                .child(orderNode);
 
-        }
-
-        if(userType.equals("Staff")) {
-            orderRef = FirebaseDatabase
-                    .getInstance()
-                    .getReference()
-                    .child(staffNode)
-                    .child(staffId)
-                    .child(orderNode);
-
-        }
         query = orderRef.orderByChild("status").equalTo(status);
         FirebaseRecyclerOptions<UserOrderList> options = new FirebaseRecyclerOptions.Builder<UserOrderList>()
                 .setQuery(query, UserOrderList.class)

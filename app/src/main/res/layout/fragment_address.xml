@@ -6,6 +6,13 @@
     android:layout_marginTop="60dp"
     tools:context=".View.Fragments.AddressFragment">
 
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/addressRecycleView"
+        android:layout_width="match_parent"
+        android:layout_height="500dp" />
+
     <Button
         android:id="@+id/btnAddAddress"
         android:layout_width="match_parent"
@@ -14,11 +21,4 @@
         android:text="@string/textAddAddress"
         style="@style/buttonStyle"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/addressRecycleView"
-        android:layout_width="match_parent"
-        android:layout_height="530dp" />
-
-
 </RelativeLayout>
